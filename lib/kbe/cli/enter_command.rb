@@ -13,12 +13,12 @@ module KBE
 
       option ['-c', '--container'], 'CONTAINER', 'container', default: :first
 
-      parameter "SELECTOR", "k8s selector, like app=nginx"
+      parameter "SELECTOR_OR_POD", "selector or pod name"
       parameter "[CMD] ...", "cmd"
 
       def execute
         cmd_list = ["sh"] unless cmd_list
-        pod = KBE.pod_by selector
+        pod = KBE.pod_by selector_or_pod
 
         args = []
         args << "exec -it #{pod}"

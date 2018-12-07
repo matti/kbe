@@ -10,10 +10,11 @@ module KBE
         exit 0
       end
 
-      parameter "[POD]", "pod"
+      parameter "[POD]", "list containers from pod", attribute_name: :selector
 
       def execute
-        if pod
+        if selector
+          pod = KBE.pod_by(selector, only_running: false)
           json = JSON.parse(`kubectl get pod #{pod} -o json`)
           for container in json["spec"]["containers"]
             puts container["name"]
@@ -21,6 +22,7 @@ module KBE
         else
           KBE.kubectl ["get pod"]
         end
+      rescue JSON::ParserError
       end
     end
   end
