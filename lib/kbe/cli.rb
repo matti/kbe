@@ -1,5 +1,5 @@
 require 'clamp'
-#Clamp.allow_options_after_parameters = true
+Clamp.allow_options_after_parameters = true
 
 module KBE
   module CLI
