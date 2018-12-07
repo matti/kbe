@@ -17,7 +17,12 @@ module KBE
       parameter "[CMD] ...", "cmd"
 
       def execute
-        cmd_list = ["sh"] unless cmd_list
+        cmds = if cmd_list.nil? || cmd_list.empty?
+          ["sh"]
+        else
+          cmd_list
+        end
+
         pod = KBE.pod_by selector_or_pod
 
         args = []
@@ -25,7 +30,8 @@ module KBE
         unless container == :first
           args << "-c #{container}"
         end
-        args << cmd_list.join(" ")
+        args << "--"
+        args << cmds.join(" ")
 
         KBE.kubectl args
       end
