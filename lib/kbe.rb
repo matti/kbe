@@ -1,3 +1,4 @@
+require "colorize"
 module KBE
   class Error < StandardError; end
 
@@ -7,7 +8,7 @@ module KBE
     cmd << args
 
     cmd_string = cmd.join " "
-    STDERR.puts cmd_string
+    STDERR.puts cmd_string.colorize(:light_black)
     exec cmd_string
   end
 

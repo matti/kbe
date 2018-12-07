@@ -2,6 +2,7 @@
 require_relative "version_command"
 require_relative "help_command"
 require_relative "enter_command"
+require_relative "list_command"
 
 module KBE
   module CLI
@@ -12,7 +13,7 @@ module KBE
         puts KBE::VERSION
         exit(0)
       end
-
+      subcommand ["list"], "List pods", ListCommand
       subcommand ["enter"], "Enter a container", EnterCommand
       subcommand ["version"], "Show version information", VersionCommand
       subcommand ["help"], "Show help", HelpCommand
