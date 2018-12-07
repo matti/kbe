@@ -4,6 +4,7 @@ require_relative "help_command"
 require_relative "enter_command"
 require_relative "list_command"
 require_relative "delete_command"
+require_relative "logs_command"
 
 module KBE
   module CLI
@@ -16,6 +17,7 @@ module KBE
       end
       subcommand ["list"], "List pods", ListCommand
       subcommand ["enter"], "Enter a container", EnterCommand
+      subcommand ["logs"], "Get logs", LogsCommand
       subcommand ["delete"], "Delete a pod", DeleteCommand
 
       subcommand ["version"], "Show version information", VersionCommand
