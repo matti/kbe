@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kbe (0.2.3)
+    kbe (0.2.4)
       clamp
       colorize (~> 0.8, >= 0.8.1)
 
